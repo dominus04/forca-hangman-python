@@ -71,7 +71,7 @@ f = open('Random Words.txt', 'r')
 words = f.readlines()
 f.close()
 
-start = input("Type 1 to start the game: ")
+start = input("Digite 1 para iniciar o jogo: ")
 os.system('cls')
 
 while start != 0:
@@ -86,7 +86,7 @@ while start != 0:
         display += "_"
 
     os.system('cls')
-    print("Tried: ", end="")
+    print("Letras tentadas: ", end="")
 
     for letra in tries:
         print(letra.upper(), end=" - ")
@@ -102,7 +102,7 @@ while start != 0:
         for i in display:
             print(i, end=" ")
 
-        answer = input("\n\nTry to guess one letter: ")
+        answer = input("\n\nTente advinhar uma letra: ")
 
         os.system('cls')
 
@@ -115,7 +115,7 @@ while start != 0:
             if answer not in display:
                 life -= 1
 
-            print("Tried: ", end="")
+            print("Letras tentadas: ", end="")
 
             for letra in tries:
                 print(letra.upper(), end=" - ")
@@ -123,17 +123,20 @@ while start != 0:
             print_hangman(life)
         else:
 
-            print("Tried: ", end="")
+            print("Letras tentadas: ", end="")
 
             for letra in tries:
                 print(letra.upper(), end=" - ")
             print("\n")
-            print("You had tried this letter.\n")
+            print("Você já tentou esta letra.\n")
             print_hangman(life)
 
-    if life >= 1:
-        print("\n\nCongratulations, you won the game!!")
-    else:
-        print("\n\nGame Over, the word was %s" % ''.join(word_chose))
+            if word_chose == display:
+            break
 
-    start = input("\n\nIf you want to start a new game type 1 else type 0: ")
+    if life >= 1:
+        print("\n\n\n\nParabéns você venceu o jogo!!")
+    else:
+        print("\n\nFim de jogo, a palavra era %s" % ''.join(word_chose))
+
+    start = input("\n\nSe quiser iniciar outro jogo digite 1, caso contrário digite 0: ")
